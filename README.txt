@@ -1,0 +1,1 @@
+Out project for Function Programming course in Clojure
