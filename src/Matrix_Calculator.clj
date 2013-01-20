@@ -5,7 +5,6 @@
 (def mat2 [[3 2 1] [6 5 4] [9 8 7]])
 
 
-
 (defn sumVector [vec1]
   
   (apply + vec1)
@@ -19,7 +18,7 @@
 (defn addVectors [vec1 vec2]
     {:pre [(= (count vec1) (count vec2)) ]
    }
-;   (vec 
+   (vec 
      (lazy-seq
        (when-let [v1 (seq vec1)]
          (when-let [v2 (seq vec2)]
@@ -28,12 +27,12 @@
       )
      )
     )
-;   )
+   )
 
 (defn addMatrixes [mat1 mat2]
   {:pre [(= (count mat1) (count mat2)) ]
    }
-  ; (vec 
+   (vec 
      (lazy-seq
        (when-let [m1 (seq mat1)]
          (when-let [m2 (seq mat2)]
@@ -42,7 +41,7 @@
       )
      )
     )
-  ; )
+   )
  
 
 (defn createMultipicationVec [vec1 vec2]
@@ -103,9 +102,9 @@
     
   (vec
     (loop [rslt (vector) m1 mat1]
-      (if (= (count m1) 1)
-           (conj rslt (vec (map #(dotProduct (first m1) %) (matTranspose mat2))))
-             
+      (if (= (count m1) 0)
+           rslt
+      
            (recur (conj rslt (vec (map #(dotProduct (first m1) %) (matTranspose mat2)))) (rest m1))
         )      
        )
@@ -144,3 +143,10 @@
     )  
    )
   )
+
+
+(defn exec
+  ([f m] m)
+  ([f m1 m2] (f m1 m2))
+  ([f m1 m2 & more] (reduce f (f m1 m2) more))
+ )
