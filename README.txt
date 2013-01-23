@@ -1,1 +1,1 @@
-Out project for Function Programming course in Clojure
+Out project for Functional Programming course in Clojure
